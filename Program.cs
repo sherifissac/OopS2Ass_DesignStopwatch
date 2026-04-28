@@ -39,8 +39,22 @@ namespace OopS2Ass_DesignStopwatch
             //declare variables
             private DateTime startTime;
             private DateTime endTime;
-            // Duration in Private Set
-            public TimeSpan Duration { get; private set; }
+            // Duration in Private Set. If user tried to display duratuin while stopwatch is running , it will show 00:00:00
+            public TimeSpan Duration 
+            {
+                get
+                {
+                    if (isRunning)
+                    {
+                        throw new InvalidOperationException("Stopwatch is running. Please stop it before checking the duration.");
+                    }
+                    else
+                    {
+                        return endTime - startTime;
+                    }
+                }
+               
+            }
             //validate if the stopwatch is running
             private bool isRunning = false;
             
@@ -66,7 +80,6 @@ namespace OopS2Ass_DesignStopwatch
                 else
                 {
                     endTime = DateTime.Now;
-                    Duration = endTime - startTime;
                     isRunning = false;
                     Console.WriteLine("Stopwatch stopped at: " + endTime);
                 }
