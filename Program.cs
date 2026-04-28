@@ -39,7 +39,7 @@ namespace OopS2Ass_DesignStopwatch
             //declare variables
             private DateTime startTime;
             private DateTime endTime;
-            // Duration in Private Set. If user tried to display duratuin while stopwatch is running , it will show 00:00:00
+            // Duration in Private Set. If user tried to display duratuin while stopwatch is running , exception will be thrown
             public TimeSpan Duration 
             {
                 get
